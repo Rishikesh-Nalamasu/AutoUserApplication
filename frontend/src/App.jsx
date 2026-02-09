@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext/AuthContext';
+import { SocketProvider } from './context/SocketContext/SocketContext';
 import Navbar from './components/Navbar/Navbar';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import Home from './pages/Home/Home';
@@ -44,7 +45,9 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <AppContent />
+        <SocketProvider>
+          <AppContent />
+        </SocketProvider>
       </AuthProvider>
     </Router>
   );
