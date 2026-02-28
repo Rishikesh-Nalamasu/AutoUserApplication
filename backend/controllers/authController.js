@@ -10,7 +10,7 @@ const generateToken = (id, type) => {
   });
 };
 
-// Student Signup
+// Student Signup abcdef
 export const studentSignup = async (req, res) => {
   try {
     const { name, year, branch, section, email, password } = req.body;
