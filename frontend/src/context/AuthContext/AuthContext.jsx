@@ -116,6 +116,10 @@ export const AuthProvider = ({ children }) => {
     setUserType(null);
   };
 
+  const updateUser = (newUserData) => {
+    setUser(newUserData);
+  };
+
   const value = {
     user,
     userType,
@@ -123,6 +127,7 @@ export const AuthProvider = ({ children }) => {
     login,
     signup,
     logout,
+    updateUser,
     isAuthenticated: !!user
   };
 

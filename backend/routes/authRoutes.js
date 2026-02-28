@@ -3,7 +3,11 @@ import {
   studentSignup,
   studentLogin,
   driverLogin,
-  verifyToken
+  verifyToken,
+  updateProfile,
+  getPastRides,
+  getPastHorns,
+  getDashboard
 } from '../controllers/authController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
@@ -18,5 +22,17 @@ router.post('/driver/login', driverLogin);
 
 // Verify token (protected route)
 router.get('/verify', authMiddleware, verifyToken);
+
+// Profile update (protected)
+router.put('/profile/update', authMiddleware, updateProfile);
+
+// Past rides - driver (protected)
+router.get('/driver/past-rides', authMiddleware, getPastRides);
+
+// Past horns - student (protected)
+router.get('/student/past-horns', authMiddleware, getPastHorns);
+
+// Dashboard (protected)
+router.get('/dashboard', authMiddleware, getDashboard);
 
 export default router;

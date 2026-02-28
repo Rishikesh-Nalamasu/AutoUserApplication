@@ -1,6 +1,19 @@
 import pool from '../config/db.js';
 
 class PastHorn {
+  // Get all horn records for a student
+  static async getAllByStudentId(studentId) {
+    const [rows] = await pool.query(
+      `SELECT ph.*, l.location_name 
+       FROM PastHorns ph 
+       JOIN Locations l ON ph.location_id = l.location_id 
+       WHERE ph.student_id = ? 
+       ORDER BY ph.created_at DESC`,
+      [studentId]
+    );
+    return rows;
+  }
+
   // Get last horn record for a student
   static async getLastByStudentId(studentId) {
     const [rows] = await pool.query(

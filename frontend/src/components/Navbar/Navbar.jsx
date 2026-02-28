@@ -5,7 +5,7 @@ import './Navbar.css';
 
 const Navbar = ({ onLoginClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, userType, logout } = useAuth();
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -57,6 +57,50 @@ const Navbar = ({ onLoginClick }) => {
               About Us
             </Link>
           </li>
+          {isAuthenticated && (
+            <>
+              <li className="nav-item">
+                <Link 
+                  to="/dashboard" 
+                  className={`nav-link ${isActive('/dashboard')}`} 
+                  onClick={closeMenu}
+                >
+                  Dashboard
+                </Link>
+              </li>
+              {userType === 'driver' && (
+                <li className="nav-item">
+                  <Link 
+                    to="/past-rides" 
+                    className={`nav-link ${isActive('/past-rides')}`} 
+                    onClick={closeMenu}
+                  >
+                    My Rides
+                  </Link>
+                </li>
+              )}
+              {userType === 'student' && (
+                <li className="nav-item">
+                  <Link 
+                    to="/past-horns" 
+                    className={`nav-link ${isActive('/past-horns')}`} 
+                    onClick={closeMenu}
+                  >
+                    My Horns
+                  </Link>
+                </li>
+              )}
+              <li className="nav-item">
+                <Link 
+                  to="/profile" 
+                  className={`nav-link ${isActive('/profile')}`} 
+                  onClick={closeMenu}
+                >
+                  Profile
+                </Link>
+              </li>
+            </>
+          )}
           <li className="nav-item nav-button-container">
             {isAuthenticated ? (
               <button className="nav-button logout-btn" onClick={handleLogout}>

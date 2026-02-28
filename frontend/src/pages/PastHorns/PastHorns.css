@@ -1,0 +1,259 @@
+/* ===== Past Horns Page ===== */
+.past-horns-page {
+  margin-top: 70px;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(145deg, #fffde7, #fafbfc);
+  padding: 40px 20px;
+}
+
+.past-horns-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Header */
+.past-horns-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.past-horns-header .header-left h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.horns-subtitle {
+  color: #8a8aa0;
+  font-size: 0.95rem;
+}
+
+.horn-stat {
+  border: 1px solid #fff3e0 !important;
+}
+
+.horn-active-num {
+  color: #e65100 !important;
+}
+
+/* Filter Tabs */
+.horn-filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid #f0f0f0;
+}
+
+.horn-filter-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #8a8aa0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.horn-filter-tab:hover {
+  color: #1a1a2e;
+  background: #f5f5f5;
+}
+
+.horn-filter-tab.active {
+  background: linear-gradient(135deg, #ff9800, #e65100);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.25);
+}
+
+.horn-tab-count {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.horn-filter-tab.active .horn-tab-count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Horns List */
+.horns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.horn-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.horn-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.horn-active {
+  border-left: 4px solid #ff9800;
+  background: linear-gradient(90deg, #fffde7, #fff);
+}
+
+.horn-icon-col {
+  flex-shrink: 0;
+}
+
+.horn-status-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.horn-status-icon.on {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.horn-status-icon.off {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.horn-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.horn-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.horn-main h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.horn-status-badge {
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.horn-badge-on {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.horn-badge-off {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.horn-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.horn-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: #8a8aa0;
+}
+
+.horn-id {
+  font-size: 0.8rem;
+  color: #ccc;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Loading & Empty */
+.horns-loading, .horns-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.horns-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e0e0e0;
+  border-top: 3px solid #ff9800;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+.horns-empty h3 {
+  font-size: 1.2rem;
+  color: #999;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.horns-empty p {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .past-horns-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .past-horns-header .header-stats {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .past-horns-header .header-left h1 {
+    font-size: 1.4rem;
+  }
+
+  .horn-card {
+    flex-wrap: wrap;
+  }
+
+  .horn-id {
+    width: 100%;
+    text-align: right;
+  }
+}

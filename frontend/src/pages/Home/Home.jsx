@@ -197,7 +197,7 @@ const Home = () => {
         {!isAuthenticated && (
           <div className="welcome-message">
             <h1>Welcome to AutoRide</h1>
-            <p>Please login to access the ride services</p>
+            <p>Login to access real-time ride communication</p>
           </div>
         )}
       </div>

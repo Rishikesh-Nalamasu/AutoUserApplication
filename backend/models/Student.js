@@ -25,6 +25,18 @@ class Student {
     );
     return result.insertId;
   }
+
+  static async update(studentId, data) {
+    const fields = [];
+    const values = [];
+    if (data.name !== undefined) { fields.push('name = ?'); values.push(data.name); }
+    if (data.year !== undefined) { fields.push('year = ?'); values.push(data.year); }
+    if (data.branch !== undefined) { fields.push('branch = ?'); values.push(data.branch); }
+    if (data.section !== undefined) { fields.push('section = ?'); values.push(data.section); }
+    if (fields.length === 0) return;
+    values.push(studentId);
+    await pool.query(`UPDATE Students SET ${fields.join(', ')} WHERE student_id = ?`, values);
+  }
 }
 
 export default Student;

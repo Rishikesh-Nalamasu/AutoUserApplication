@@ -1,6 +1,19 @@
 import pool from '../config/db.js';
 
 class PastRide {
+  // Get all ride records for a driver
+  static async getAllByDriverId(driverId) {
+    const [rows] = await pool.query(
+      `SELECT pr.*, c.checkpoint_name 
+       FROM PastRides pr 
+       JOIN Checkpoints c ON pr.checkpoint_id = c.checkpoint_id 
+       WHERE pr.driver_id = ? 
+       ORDER BY pr.start_time DESC`,
+      [driverId]
+    );
+    return rows;
+  }
+
   // Get last ride record for a driver
   static async getLastByDriverId(driverId) {
     const [rows] = await pool.query(

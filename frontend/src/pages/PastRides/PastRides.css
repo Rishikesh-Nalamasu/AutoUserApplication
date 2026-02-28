@@ -1,0 +1,294 @@
+/* ===== Past Rides Page ===== */
+.past-rides-page {
+  margin-top: 70px;
+  min-height: calc(100vh - 70px);
+  background: linear-gradient(145deg, #f0fdf4, #fafbfc);
+  padding: 40px 20px;
+}
+
+.past-rides-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Header */
+.past-rides-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.header-left h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.rides-subtitle {
+  color: #8a8aa0;
+  font-size: 0.95rem;
+}
+
+.header-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.mini-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 14px 22px;
+  border-radius: 14px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.mini-stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1a1a2e;
+}
+
+.active-num {
+  color: #2e7d32 !important;
+}
+
+.mini-stat-label {
+  font-size: 0.72rem;
+  color: #8a8aa0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: #fff;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid #f0f0f0;
+}
+
+.filter-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #8a8aa0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-tab:hover {
+  color: #1a1a2e;
+  background: #f5f5f5;
+}
+
+.filter-tab.active {
+  background: #2e7d32;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+}
+
+.tab-count {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.filter-tab.active .tab-count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Rides List */
+.rides-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ride-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.ride-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.ride-active {
+  border-left: 4px solid #2e7d32;
+  background: linear-gradient(90deg, #f0fdf4, #fff);
+}
+
+.ride-icon-col {
+  flex-shrink: 0;
+}
+
+.ride-status-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ride-status-icon.on {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.ride-status-icon.off {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.ride-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.ride-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.ride-main h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.ride-status-badge {
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.badge-on {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badge-off {
+  background: #f5f5f5;
+  color: #999;
+}
+
+.ride-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ride-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: #8a8aa0;
+}
+
+.ride-meta-item.duration {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.ride-id {
+  font-size: 0.8rem;
+  color: #ccc;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Loading & Empty */
+.rides-loading, .rides-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.rides-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e0e0e0;
+  border-top: 3px solid #2e7d32;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.rides-empty h3 {
+  font-size: 1.2rem;
+  color: #999;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.rides-empty p {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .past-rides-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .header-stats {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-left h1 {
+    font-size: 1.4rem;
+  }
+
+  .ride-card {
+    flex-wrap: wrap;
+  }
+
+  .ride-id {
+    width: 100%;
+    text-align: right;
+  }
+}
