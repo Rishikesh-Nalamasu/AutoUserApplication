@@ -88,15 +88,42 @@ const Dashboard = () => {
     { name: 'Checkpoint 5', value: 10 },
   ];
 
-  const dailyTrends = getSafeData(dashData?.dailyTrends, dailyTrendsFallback);
-  const hourlyTrends = getSafeData(dashData?.hourlyTrends, hourlyTrendsFallback);
+  // Map daily data to include day names for chart display
+  const mapDailyTrends = (data) => {
+    if (!data || data.length === 0) return null;
+    return data.map(d => ({
+      day: d.date || d.day,
+      horns: d.horns || 0,
+      rides: d.rides || 0,
+    }));
+  };
+
+  // Map hourly data for proper chart display
+  const mapHourlyTrends = (data) => {
+    if (!data || data.length === 0) return null;
+    return data.map(h => ({
+      hour: h.hour,
+      count: h.horns || h.count || 0,
+    }));
+  };
+
+  const dailyTrends = getSafeData(mapDailyTrends(dashData?.daily), dailyTrendsFallback);
+  const hourlyTrends = getSafeData(mapHourlyTrends(dashData?.hourly), hourlyTrendsFallback);
   const locationDist = getSafeData(dashData?.locationDistribution, locationDistFallback);
   const checkpointDist = getSafeData(dashData?.checkpointDistribution, checkpointDistFallback);
 
-  const totalHorns = dashData?.totalHorns ?? dailyTrendsFallback.reduce((s, d) => s + d.horns, 0);
-  const totalRides = dashData?.totalRides ?? dailyTrendsFallback.reduce((s, d) => s + d.rides, 0);
-  const activeNow = dashData?.activeNow ?? 0;
-  const peakHour = dashData?.peakHour ?? '5PM';
+  const totalHorns = dashData?.overview?.totalHorns ?? dailyTrendsFallback.reduce((s, d) => s + d.horns, 0);
+  const totalRides = dashData?.overview?.totalRides ?? dailyTrendsFallback.reduce((s, d) => s + d.rides, 0);
+  const activeNow = dashData?.overview?.activeNow ?? 0;
+  const peakHour = dashData?.overview?.peakHour ?? '5PM';
+
+  // Compute dynamic insights
+  const busiestDay = dailyTrends.length > 0
+    ? dailyTrends.reduce((max, d) => (d.horns + d.rides) > (max.horns + max.rides) ? d : max, dailyTrends[0])
+    : { day: 'N/A', horns: 0, rides: 0 };
+  
+  const topLocation = locationDist.length > 0 ? locationDist[0].name : 'N/A';
+  const topCheckpoint = checkpointDist.length > 0 ? checkpointDist[0].name : 'N/A';
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -397,7 +424,7 @@ const Dashboard = () => {
             </div>
             <div>
               <h4>Busiest Day</h4>
-              <p>Friday sees the highest activity with peak demand during evening hours</p>
+              <p><strong>{busiestDay.day}</strong> with {busiestDay.horns} horns and {busiestDay.rides} rides</p>
             </div>
           </div>
 
@@ -408,8 +435,8 @@ const Dashboard = () => {
               </svg>
             </div>
             <div>
-              <h4>Peak Hours</h4>
-              <p>Most rides happen between 12PM-1PM and 5PM-6PM — class dismissal times</p>
+              <h4>Peak Hour</h4>
+              <p>Most activity at <strong>{peakHour}</strong> — morning/evening rush</p>
             </div>
           </div>
 
@@ -422,7 +449,7 @@ const Dashboard = () => {
             </div>
             <div>
               <h4>Hotspot</h4>
-              <p>Main Gate is consistently the highest-demand location for student pickups</p>
+              <p><strong>{topLocation}</strong> is the highest-demand location for student pickups</p>
             </div>
           </div>
         </motion.div>
