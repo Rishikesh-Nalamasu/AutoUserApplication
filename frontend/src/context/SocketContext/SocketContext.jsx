@@ -32,7 +32,7 @@ export const SocketProvider = ({ children }) => {
     if (isAuthenticated) {
       const token = localStorage.getItem('token');
       
-      const newSocket = io('http://localhost:5000', {
+      const newSocket = io('https://autouserapplication.onrender.com', {
         auth: { token },
         transports: ['websocket', 'polling']
       });

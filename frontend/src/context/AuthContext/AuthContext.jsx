@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   const verifyToken = async (token, type) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/verify`, {
+      const response = await fetch(`https://autouserapplication.onrender.com/api/auth/verify`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password, type) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/${type}/login`, {
+      const response = await fetch(`https://autouserapplication.onrender.com/api/auth/${type}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (userData) => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/student/signup', {
+      const response = await fetch('https://autouserapplication.onrender.com/api/auth/student/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

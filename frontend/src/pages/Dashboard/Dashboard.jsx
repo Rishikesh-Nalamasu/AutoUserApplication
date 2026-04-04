@@ -25,7 +25,7 @@ const Dashboard = () => {
   const fetchDashboard = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/auth/dashboard?range=${timeRange}`, {
+      const response = await fetch(`https://autouserapplication.onrender.com/api/auth/dashboard?range=${timeRange}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();

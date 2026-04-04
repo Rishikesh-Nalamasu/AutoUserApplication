@@ -38,7 +38,7 @@ const Profile = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/auth/profile/update`, {
+      const response = await fetch(`https://autouserapplication.onrender.com/api/auth/profile/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

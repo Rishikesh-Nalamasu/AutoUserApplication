@@ -14,7 +14,7 @@ const PastRides = () => {
   const fetchPastRides = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/auth/driver/past-rides', {
+      const response = await fetch('https://autouserapplication.onrender.com/api/auth/driver/past-rides', {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();
