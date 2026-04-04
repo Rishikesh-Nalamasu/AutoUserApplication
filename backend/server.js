@@ -13,7 +13,7 @@ const httpServer = createServer(app);
 const PORT = process.env.PORT || 5000;
 
 // Allowed origins for CORS
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174','https://autouserapplication-1.onrender.com/'];
 
 // Initialize Socket.io
 const io = new Server(httpServer, {
