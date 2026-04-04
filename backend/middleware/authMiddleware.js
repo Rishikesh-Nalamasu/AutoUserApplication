@@ -14,7 +14,7 @@ const authMiddleware = async (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Find user based on type
+    // Find user based on typeawd
     let user;
     if (decoded.type === 'student') {
       user = await Student.findById(decoded.id);
